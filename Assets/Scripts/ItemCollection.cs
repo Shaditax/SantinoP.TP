@@ -1,9 +1,10 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ItemCollection : MonoBehaviour
 {
-    private int items = 0;
+    public int item = 0;
 
     public TextMeshProUGUI textoItem;
 
@@ -11,20 +12,19 @@ public class ItemCollection : MonoBehaviour
     {
         if (other.transform.tag == "Item")
         {
-            items++;
-            textoItem.text = "Llaves: " + items.ToString();
+            item++;
+            textoItem.text = "Llaves: " + item.ToString();
             Destroy(other.gameObject);
         }
 
-        if (items >= 5 && other.transform.tag == "Portón")
-        {
-            Destroy(other.gameObject);
-        }
     }
 
 
     void Update()
     {
-
+        if (item >= 8)
+        {
+            SceneManager.LoadScene("Ganaste");
+        }
     }
 }
