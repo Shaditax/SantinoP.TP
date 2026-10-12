@@ -1,5 +1,7 @@
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -7,12 +9,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float fuerzaMovimiento = 10f;
     [SerializeField] private float fuerzaSalto = 6f;
 
+    
     private Rigidbody rb;
     private Vector3 direccionMovimiento;
     private bool tocandoPiso;
     private bool quiereSaltar;
     public Transform transformCamara;
-    private int itemsAgarrados;
+  
 
     private void Awake()
     {
@@ -54,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         {
             tocandoPiso = true;
         }
+
     }
 
     private void OnCollisionExit(Collision collision)
@@ -65,9 +69,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    
 
-    private void sumarPuntos()
-    {
-        itemsAgarrados *= 1;
-    }
+
+
 }
