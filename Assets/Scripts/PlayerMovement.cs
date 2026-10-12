@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 direccionMovimiento;
     private bool tocandoPiso;
     private bool quiereSaltar;
+    public Transform transformCamara;
+    private int itemsAgarrados;
 
     private void Awake()
     {
@@ -19,10 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        direccionMovimiento = new Vector3(horizontal, 0, vertical).normalized;
+        
 
         if (Input.GetKeyDown(KeyCode.Space) && tocandoPiso)
         {
@@ -33,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        direccionMovimiento = new Vector3(horizontal, 0, vertical).normalized;
+
         rb.AddForce(direccionMovimiento * fuerzaMovimiento);
 
         if (quiereSaltar)
@@ -58,5 +62,12 @@ public class PlayerMovement : MonoBehaviour
         {
             tocandoPiso = false;
         }
+    }
+
+
+
+    private void sumarPuntos()
+    {
+        itemsAgarrados *= 1;
     }
 }
